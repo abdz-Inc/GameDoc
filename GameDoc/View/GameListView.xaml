@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="GameDoc"
+             xmlns:vm="clr-namespace:GameDoc.ViewModel"
+             xmlns:model="clr-namespace:GameDoc.Model"
+             x:Class="GameDoc.View.GameListView"
+             x:DataType="vm:GameListViewModel"
+             BackgroundColor="{StaticResource PrimaryColor}">
+    <ContentPage.Resources>
+        <Style TargetType="Label"
+               x:Key="LabelStyle">
+            <Setter Property="TextColor"
+                    Value="Black" />
+            <Setter Property="HorizontalOptions"
+                    Value="Center" />
+            <Setter Property="VerticalOptions"
+                    Value="Center" />
+        </Style>
+        <Style TargetType="Border"
+               x:Key="BorderStyle">
+            <Setter Property="StrokeShape"
+                    Value="RoundRectangle 20,20,0,0" />
+        </Style>
+        <Style TargetType="Button"
+               x:Key="ButtonStyle">
+            <!--Setter Property="WidthRequest"
+                    Value="50" />
+            <Setter Property="HeightRequest"
+                    Value="50" />-->
+        </Style>
+    </ContentPage.Resources>
+
+    <Grid Padding="10, 10, 10, 10"
+          ColumnDefinitions="*"
+          RowDefinitions="*, 10*"
+          ColumnSpacing="20">
+        
+        <ActivityIndicator IsRunning="{Binding IsLoading}"
+                           IsVisible="{Binding IsLoading}"
+                           Color="White"
+                           Grid.Row="1" />
+        <ListView x:Name="listView"                 
+                  SeparatorColor="{StaticResource PrimaryColor}"
+                  IsVisible="{Binding IsNotLoading}"
+                  RowHeight="400"
+                  Grid.Row="1"
+                  ItemsSource="{Binding Games}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell x:DataType="model:Game">
+                        <Grid Padding="30,30,30,10"
+                              
+                              RowDefinitions="5*, 2*"
+                              ColumnDefinitions="*"
+                              BackgroundColor="Transparent">
+                            <!--<Grid.Shadow>
+                                <Shadow Brush="Black"
+                                        Offset="10,10"
+                                        Radius="40"
+                                        Opacity="0.7" />
+                            </Grid.Shadow>-->
+                            <Border StrokeShape="RoundRectangle 20,20,0,0">
+                                <!-- Image at the top -->
+                                <Image Source="{Binding Background_Image}"
+                                       Aspect="AspectFill" />
+                            </Border>
+
+                            <!-- Name and Rating at the bottom -->
+                            <Border StrokeShape="RoundRectangle 0,0,10,10"
+                                    BackgroundColor="White"
+                                    Grid.Row="1">
+
+                                <StackLayout Padding="0,10,0,10">
+
+                                    <Label Text="{Binding Name}"
+                                           FontAttributes="Bold"
+                                           FontSize="16"
+                                           Style="{x:StaticResource LabelStyle}" />
+
+                                    <!-- Use a custom Rating control or a simple label for rating -->
+                                    <Label Text="{Binding Rating, StringFormat='Rating: {0:F1}'}"
+                                           FontSize="14"
+                                           Style="{x:StaticResource LabelStyle}" />
+
+                                </StackLayout>
+                            </Border>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </Grid>
+
+</ContentPage>

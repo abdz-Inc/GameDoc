@@ -1,0 +1,68 @@
+{
+  "count": 863601,
+  "next": "https://api.rawg.io/api/games?key=e782ee17d2f149c7885f0412903de121&page=2&token=",
+  "previous": null,
+  "results": [
+    {
+      "id": 3498,
+      "slug": "grand-theft-auto-v",
+      "name": "Grand Theft Auto V",
+      "released": "2013-09-17",
+      "tba": false,
+      "background_image": "https://media.rawg.io/media/games/20a/20aa03a10cda45239fe22d035c0ebe64.jpg",
+      "rating": 4.47,
+      "rating_top": 5,
+      "ratings": [
+        {
+          "id": 5,
+          "title": "exceptional",
+          "count": 4036,
+          "percent": 58.97
+        },
+        {
+          "id": 4,
+          "title": "recommended",
+          "count": 2246,
+          "percent": 32.82
+        },
+        {
+          "id": 3,
+          "title": "meh",
+          "count": 437,
+          "percent": 6.39
+        },
+        {
+          "id": 1,
+          "title": "skip",
+          "count": 125,
+          "percent": 1.83
+        }
+      ],
+      "ratings_count": 6744,
+      "reviews_text_count": 58,
+      "added": 20570,
+      "added_by_status": {
+        "yet": 527,
+        "owned": 11767,
+        "beaten": 5845,
+        "toplay": 609,
+        "dropped": 1098,
+        "playing": 724
+      },
+      "metacritic": 92,
+      "playtime": 74,
+      "suggestions_count": 429,
+      "updated": "2024-02-23T01:11:10",
+      "user_game": null,
+      "reviews_count": 6844,
+      "saturated_color": "0f0f0f",
+      "dominant_color": "0f0f0f",
+      "platforms": [
+        {
+          "platform": {
+            "id": 4,
+            "name": "PC",
+            "slug": "pc",
+            "image": null,
+            "year_end": null,
+            "year_s

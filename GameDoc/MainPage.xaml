@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="GameDoc"
+             xmlns:vm="clr-namespace:GameDoc.ViewModel"
+             xmlns:model="clr-namespace:GameDoc.Model"
+             xmlns:ref="clr-namespace:System.Reflection;assembly=System.Reflection"
+             x:Class="GameDoc.MainPage"
+             x:DataType="vm:GameListViewModel"
+             BackgroundColor="{StaticResource PrimaryColor}">
+    <ContentPage.Resources>
+        <Style TargetType="Label"
+               x:Key="LabelStyle">
+            <Setter Property="TextColor"
+                    Value="Black" />
+            <Setter Property="HorizontalOptions"
+                    Value="Center" />
+            <Setter Property="VerticalOptions"
+                    Value="Center" />
+        </Style>
+        <Style TargetType="Border"
+               x:Key="BorderStyle">
+            <Setter Property="StrokeShape"
+                    Value="RoundRectangle 20,20,0,0" />
+        </Style>
+        <Style TargetType="Button"
+               x:Key="ButtonStyle">
+            <!--Setter Property="WidthRequest"
+                    Value="50" />
+            <Setter Property="HeightRequest"
+                    Value="50" />-->
+        </Style>
+    </ContentPage.Resources>
+
+    <Grid Padding="10, 30, 10, 30"
+          VerticalOptions="Start"
+          
+          ColumnDefinitions="4*, *"
+          RowDefinitions="*"
+          ColumnSpacing="10">
+
+        <Border BackgroundColor="{StaticResource PrimaryColor}"
+                VerticalOptions="Start"
+                Grid.Column="1"
+                Stroke="{StaticResource PrimaryColor}"
+                HeightRequest="300"
+                StrokeShape="RoundRectangle 10,10,10,10">
+            <Border.Shadow>
+                <Shadow Brush="white"
+                        Offset="0,0"
+                        Radius="220"
+                        Opacity="0.1" />
+            </Border.Shadow>
+            <StackLayout VerticalOptions="Center"
+                         HorizontalOptions="Center"
+                         RadioButtonGroup.GroupName="OrderRadioButton"
+                         Spacing="10">
+                <Border 
+                    
+                    StrokeShape="RoundRectangle 10,10,0,0"
+                        Background="White">
+                    <Button Text="Sort"
+                            BackgroundColor="Transparent"
+                           Style="{StaticResource LabelStyle}" />
+                </Border>
+                <RadioButton Content="A↑"
+                             IsChecked="True"
+                             Value="ascending"
+                             x:Name="rba"
+                             CheckedChanged="AscendingSort_Clicked" />
+                <RadioButton Content="D↓"
+                             Value="descending"
+                             x:Name="rbd"
+                             CheckedChanged="DescendingSort_Clicked" />
+                <Label Text="--- Property ---" FontSize="Micro" TextColor="White" />
+                <ListView Margin="0,0,0,0"
+                          SeparatorColor="{StaticResource PrimaryColor}"
+                          x:Name="propertylist"
+                          ItemTapped="Sort_Clicked">
+                    <ListView.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Name</x:String>
+                            <x:String>Rating</x:String>
+                        </x:Array>
+                    </ListView.ItemsSource>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Label Text="{Binding .}"
+                                       TextColor="White"
+                                       Style="{StaticResource LabelStyle}" />
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </Border>
+
+        <ActivityIndicator IsRunning="{Binding IsLoading}"
+                           IsVisible="{Binding IsLoading}"
+                           Color="White"
+                           Grid.Column="0" />
+        <ListView x:Name="listView"
+                  ZIndex="1"
+                  SeparatorColor="{StaticResource PrimaryColor}"
+                  ItemTapped="listView_ItemTapped"
+                  IsVisible="{Binding IsNotLoading}"
+                  RowHeight="400"
+                  Grid.Column="0"
+                  ItemsSource="{Binding Games}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell x:DataType="model:Game">
+                        <Grid Padding="30,0,30,30"
+                              RowDefinitions="5*, 2*"
+                              ColumnDefinitions="*"
+                              BackgroundColor="Transparent">
+                            <!--<Grid.Shadow>
+                                <Shadow Brush="Black"
+                                        Offset="10,10"
+                                        Radius="40"
+                                        Opacity="0.7" />
+                            </Grid.Shadow>-->
+                            <Border StrokeShape="RoundRectangle 20,20,0,0">
+                                <!-- Image at the top -->
+                                <Image Source="{Binding Background_Image}"
+                                       Aspect="AspectFill" />
+                            </Border>
+
+                            <!-- Name and Rating at the bottom -->
+                            <Border StrokeShape="RoundRectangle 0,0,10,10"
+                                    BackgroundColor="White"
+                                    Grid.Row="1">
+
+                                <StackLayout Padding="0,10,0,10">
+
+                                    <Label Text="{Binding Name}"
+                                           FontAttributes="Bold"
+                                           FontSize="16"
+                                           Style="{x:StaticResource LabelStyle}" />
+
+                                    <!-- Use a custom Rating control or a simple label for rating -->
+                                    <Label Text="{Binding Rating, StringFormat='Rating: {0:F1}'}"
+                                           FontSize="14"
+                                           Style="{x:StaticResource LabelStyle}" />
+
+                                </StackLayout>
+                            </Border>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </Grid>
+
+</ContentPage>

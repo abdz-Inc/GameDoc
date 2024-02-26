@@ -1,0 +1,23 @@
+﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:GameDoc"
+             x:Class="GameDoc.App">
+    <Application.Resources>
+        
+
+        <ResourceDictionary>
+            
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
+                <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <Color x:Key="PrimaryColor">#222222</Color>
+            <Color x:Key="PrimaryDark1">#555555</Color>
+            <Color x:Key="PrimaryDark2">#777777</Color>
+            <Color x:Key="DarkShade3">#999999</Color>
+            <Color x:Key="AppBackgroundColor">#F5F5F5</Color>
+            
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

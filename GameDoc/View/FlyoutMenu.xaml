@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GameDoc.View.FlyoutMenu"
+             xmlns:model="clr-namespace:GameDoc.Model"
+             xmlns:vm="clr-namespace:GameDoc.ViewModel"
+             x:DataType="vm:FlyoutMenuViewModel"
+             Title="FlyoutMenu">
+    <VerticalStackLayout>
+        <Label Text="Sort ↑↓"
+               VerticalOptions="Center"
+               HorizontalOptions="Center" />
+        <VerticalStackLayout RadioButtonGroup.GroupName="sortorder">
+            <RadioButton Content="Ascending ↑"
+                         Value="Ascending"
+                         CheckedChanged="RadioButton_CheckedChanged" />
+            <RadioButton Content="Descending ↓"
+                         Value="Descending"
+                         CheckedChanged="RadioButton_CheckedChanged" />
+        </VerticalStackLayout>
+        <ListView x:DataType="vm:FlyoutMenuViewModel"
+                  ItemsSource="{Binding Properties}"
+                  ItemSelected="ListView_ItemSelected">
+            
+        </ListView>
+    </VerticalStackLayout>
+</ContentPage>

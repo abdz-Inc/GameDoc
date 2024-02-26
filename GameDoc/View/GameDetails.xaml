@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GameDoc.View.GameDetails"
+             xmlns:vm="clr-namespace:GameDoc.ViewModel"
+             xmlns:model="clr-namespace:GameDoc.Model"
+             Title="GameDetail">
+    <Grid RowDefinitions="500,*" BindingContext="{Binding GameObj}">
+        <!-- Image at the top, half of the page -->
+        <Border StrokeShape="RoundRectangle 0,0,20,20"
+                Grid.Row="0">
+            <Image
+                   Source="{Binding Background_Image}"
+                   Aspect="AspectFill" />
+        </Border>
+
+        <!-- Scrollable content in the lower half of the page -->
+        <StackLayout Grid.Row="1" Spacing="20" Padding="10,10,10,10">
+            <!-- Game details content -->
+            <Label Text="{Binding Name}"
+                   FontSize="Title" />
+            <Label Text="Genre: Action"
+                   FontSize="Subtitle" />
+            <Label Text="{Binding Rating}"
+                   FontSize="Subtitle" />
+            <Label Text="Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. ..." />
+
+            <!-- Add more details as needed -->
+
+            <!-- Placeholder content to make the ScrollView scrollable -->
+            <BoxView 
+                     Color="Transparent" />
+        </StackLayout>
+    </Grid>
+</ContentPage>
